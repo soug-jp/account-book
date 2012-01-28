@@ -3,6 +3,7 @@ class KindsController extends AppController {
     public $name = 'Kinds';
     public $helpers = array('Html', 'Form');
     public $componetns = array('Session');
+    public $uses = array('Kind', 'Account');
 
     public function index() {
         $this->set('kinds', $this->Kind->find('all'));
@@ -37,8 +38,16 @@ class KindsController extends AppController {
     public function view($id = null) {
         if ($id === null)
             $this->redirect(array('action' => 'index'));
-        $this->Kind->id = $id;
-        $this->set('kind', $this->Kind->read());
+        else {
+            $this->Kind->id = $id;
+            $this->set('kind', $this->Kind->read());
+            $this->set('kinds', $this->Kind->find('list'));
+            $this->set('sum',
+                       $this->Account->query("SELECT Sum(yen) from accounts
+                                              where kind_id=$id
+                                              group by kind_id;")
+                       );
+        }
     }
 
 }
