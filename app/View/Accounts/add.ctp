@@ -11,9 +11,9 @@
 <div class="left">
 <h1>add</h1>
 <?php
-echo $this->Form->create('Kind');
+echo $this->Form->create('Account');
 echo $this->Form->input('date', array('type' => 'date'));
-echo $this->Form->input('code');
+echo $this->Form->input('kind_id');
 echo $this->Form->input('yen');
 echo $this->Form->input('memo');
 echo $this->Form->end('save kindcount');
@@ -27,7 +27,7 @@ echo $this->Form->end('save kindcount');
     <th>name</th>
     <th>in or out</th>
   </tr>
-  <?php foreach ($kinds as $kind): ?>
+  <?php foreach ($kindl as $kind): ?>
   <tr>
     <td><?php echo $kind['Kind']['code']; ?></td>
     <td><?php echo $kind['Kind']['name']; ?></td>

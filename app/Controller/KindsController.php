@@ -33,4 +33,12 @@ class KindsController extends AppController {
             }
         }
     }
+
+    public function view($id = null) {
+        if ($id === null)
+            $this->redirect(array('action' => 'index'));
+        $this->Kind->id = $id;
+        $this->set('kind', $this->Kind->read());
+    }
+
 }

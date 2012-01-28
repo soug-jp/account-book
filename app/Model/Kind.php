@@ -1,7 +1,7 @@
 <?php
 class Kind extends AppModel {
     public $name = 'Kind';
-
+    public $hasMany = 'Account';
     public $validate = array(
         'code' => array(
             //'rule' => 'isUnique'

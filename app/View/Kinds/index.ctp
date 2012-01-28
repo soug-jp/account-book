@@ -18,6 +18,7 @@
       else echo "out"; ?>
     </td>
     <td>
+      <?php echo $this->Html->link('view', array('action'=>'view',$kind['Kind']['id'])); ?>
       <?php echo $this->Html->link('edit', array('action'=>'edit',$kind['Kind']['id'])); ?>
       <?php echo //$this->Form->postLink(
         'delete'//,

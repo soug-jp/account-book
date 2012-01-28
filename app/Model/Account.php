@@ -1,9 +1,9 @@
 <?php
 class Account extends AppModel {
     public $name = 'Account';
-
+    public $belongsTo = 'Kind';
     public $validate = array(
-        'kind' => array(
+        'kind_id' => array(
             'notEmpty' => array('rule' => 'notEmpty'),
             'numeric' => array('rule' => 'numeric')
         ),

@@ -8,7 +8,6 @@
     float:right;
 }
 </style>
-
 <div class="left">
 <h1>account list</h1>
 <?php echo $this->Html->link('add new account',array('action'=>'add')); ?>
@@ -25,7 +24,7 @@
   <tr>
     <td><?php echo $ac['Account']['id']; ?></td>
     <td><?php echo $ac['Account']['date']; ?></td>
-    <td><?php echo $ac['Account']['kind']; ?></td>
+    <td><?php echo $ac['Account']['kind_id']; ?></td>
     <td><?php echo $ac['Account']['yen']; ?></td>
     <td><?php echo $ac['Account']['memo']; ?></td>
   </tr>
