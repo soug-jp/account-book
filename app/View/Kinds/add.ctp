@@ -1,26 +1,27 @@
+<h1>add code</h1>
+<?php echo $this->Html->link('一覧へ戻る', array('action' => 'index')); ?>
 <style>
 .left {
-    width:70%;
-    float: left;
+  float: left;
+  width: 80%;
 }
 .right {
-    width: 29%;
-    float: right;
+  float: right;
+  width:19%;
 }
 </style>
+
 <div class="left">
-<h1>add</h1>
 <?php
 echo $this->Form->create('Kind');
-echo $this->Form->input('date', array('type' => 'date'));
 echo $this->Form->input('code');
-echo $this->Form->input('yen');
-echo $this->Form->input('memo');
-echo $this->Form->end('save kindcount');
+echo $this->Form->input('name');
+echo 'isincoming' . $this->Form->checkbox('isincoming');
+echo $this->Form->end('save code');
 ?>
+
 </div>
 <div class="right">
-<h1>code list</h1>
 <table>
   <tr>
     <th>code</th>
@@ -31,12 +32,7 @@ echo $this->Form->end('save kindcount');
   <tr>
     <td><?php echo $kind['Kind']['code']; ?></td>
     <td><?php echo $kind['Kind']['name']; ?></td>
-    <td>
-      <?php if ($kind['Kind']['isincoming']==1)
-        echo "in";
-      else echo "out";?>
-    </td>
+    <td><?php echo ($kind['Kind']['isincoming']==1) ? "in" : "out"; ?></td>
   </tr>
   <?php endforeach; ?>
 </table>
-</div>

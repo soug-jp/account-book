@@ -3,23 +3,17 @@ class Account extends AppModel {
     public $name = 'Account';
 
     public $validate = array(
-        'date' => array(
-            'notEmpty' => array('rule' => 'notEmpty',
-                                'message' => 'this field is required'),
-            'date' => array('rule' => 'date',
-                            'message' => 'input valid date'),
-        ),
         'kind' => array(
-            'notEmpty' => array('rule' => 'notEmpty',
-                                'message' => 'this field is required'),
-            'numeric' => array('rule' => 'numeric',
-                               'message' => 'input valid kind code'),
+            'notEmpty' => array('rule' => 'notEmpty'),
+            'numeric' => array('rule' => 'numeric')
+        ),
+        'date' => array(
+            'notEmpty' => array('rule' => 'notEmpty'),
+            'date' => array('rule' => 'date')
         ),
         'yen' => array(
-            'notEmpty' => array('rule' => 'notEmpty',
-                                'message' => 'this field is required'),
-            'numeric' => array('rule' => 'numeric',
-                               'message' => 'input valid data'),
+            'notEmpty' => array('rule' => 'notEmpty'),
+            'numeric' => array('rule' => 'numeric')
         ),
     );
 }
