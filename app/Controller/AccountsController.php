@@ -4,15 +4,15 @@ class AccountsController extends AppController {
     public $helpers = array('Html', 'Form');
     public $uses = array('Kind','Account');
     public function index() {
-        $this->set('accounts', $this->Account->find('all'));
-        $kind_all = $this->Kind->find('all');
+        $this->set('accounts', $this->Account->find('all', array('order'=>'date')));
+        $kind_all = $this->Kind->find('all', array('order'=>'code'));
         $this->set('kinds', $kind_all);
         $this->set('kindn', $this->getkindcode2name($kind_all));
     }
 
     public function add($id = null) {
-        $this->set('kindl', $this->Kind->find('all'));
-        $this->set('kinds', $this->Kind->find('list'));
+        $this->set('kindl', $this->Kind->find('all',array('order'=>'code')));
+        $this->set('kinds', $this->Kind->find('list',array('order'=>'code')));
         if ($this->request->is('post')) {
             if ($this->Account->save($this->request->data)) {
                 $this->Session->setFlash('登録しました');
@@ -35,8 +35,8 @@ class AccountsController extends AppController {
         $this->Account->id = $id;
         if (empty($this->data)) {
             $this->data = $this->Account->read();
-            $this->set('kindl', $this->Kind->find('all'));
-            $this->set('kinds', $this->Kind->find('list'));
+            $this->set('kindl', $this->Kind->find('all',array('order'=>'code')));
+            $this->set('kinds', $this->Kind->find('list',array('order'=>'code')));
         } else {
             if ($this->Account->save($this->data['Account'])) {
                 $this->Session->setFlash('account has been updated.');
