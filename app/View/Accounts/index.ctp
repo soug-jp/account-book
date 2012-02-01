@@ -25,7 +25,7 @@
   <tr>
     <td><?php echo $ac['Account']['id']; ?></td>
     <td><?php echo $ac['Account']['date']; ?></td>
-    <td><?php echo $ac['Account']['kind_id']; ?></td>
+    <td><?php echo $kindn[$ac['Account']['kind_id']]; ?></td>
     <td><?php echo $ac['Account']['yen']; ?></td>
     <td>
       <?php echo $this->Html->link("edit",array("action"=>"edit",$ac['Account']['id'])); ?>
