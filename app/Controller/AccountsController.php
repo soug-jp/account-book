@@ -14,7 +14,7 @@ class AccountsController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Account->save($this->request->data)) {
                 $this->Session->setFlash('登録しました');
-                $this->redirect(array('action' => 'index'));
+                //$this->redirect(array('action' => 'index'));
             } else {
                 $this->Session->setFlash('登録に失敗しました');
             }

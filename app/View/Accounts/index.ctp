@@ -17,6 +17,7 @@
     <th>date</th>
     <th>code</th>
     <th>yen</th>
+    <th>action</th>
     <th>memo</th>
   </tr>
 
@@ -26,6 +27,9 @@
     <td><?php echo $ac['Account']['date']; ?></td>
     <td><?php echo $ac['Account']['kind_id']; ?></td>
     <td><?php echo $ac['Account']['yen']; ?></td>
+    <td>
+      <?php echo $this->Html->link("edit",array("action"=>"edit",$ac['Account']['id'])); ?>
+    </td>
     <td><?php echo $ac['Account']['memo']; ?></td>
   </tr>
   <?php endforeach; ?>
