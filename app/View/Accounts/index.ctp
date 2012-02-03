@@ -1,3 +1,4 @@
+<?php if (!preg_match("/(SoftBank|DoCoMo|KDDI)/",$_SERVER["HTTP_USER_AGENT"])): ?>
 <style>
 .left {
     width:70%;
@@ -7,6 +8,21 @@
     width:30%;
     float:right;
 }
+@media screen and (max-width: 600px) {
+<?php else: ?>
+<style>
+<?php endif; ?>
+.left {
+    width:100%;
+    float:none;
+}
+.right{
+    width:100%;
+    float:none;
+}
+<?php if(!preg_match("/(SoftBank|DoCoMo|KDDI)/",$_SERVER["HTTP_USER_AGENT"])): ?>
+}
+<?php endif; ?>
 </style>
 <div class="left">
 <h1>account list</h1>
