@@ -1,4 +1,7 @@
 <?php
+/** patched by bis5 */
+if (file_exists(dirname(dirname(dirname(dirname(__FILE__)))) . "/app/tmp/debug"))
+    define('DEBUG',1);
 /**
  * App class
  *
