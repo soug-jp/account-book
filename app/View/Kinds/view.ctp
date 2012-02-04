@@ -1,10 +1,20 @@
-view kind
+<h1>view kind</h1>
 
-<h1><?php echo $kind['Kind']['code']; ?></h1>
-<p><?php echo $kind['Kind']['name']; ?></h1></p>
-<p><?php
-if ($kind['Kind']['isincoming'] == 1) echo "in";
-else echo "out"; ?></p>
+<table>
+  <tr>
+    <th>code</th>
+    <th>name</th>
+    <th>in or out</th>
+  </tr>
+  <tr>
+    <td><?php echo $kind['Kind']['code']; ?></td>
+    <td><?php echo $kind['Kind']['name']; ?></td>
+    <td><?php
+      if ($kind['Kind']['isincoming'] == 1) echo "in";
+      else echo "out"; ?>
+    </td>
+  </tr>
+</table>
 <h2>合計額: <?php echo $sum[0][0]["Sum(yen)"]; ?> 円</h2>
 <table>
   <tr>

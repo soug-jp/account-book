@@ -1,16 +1,5 @@
 <h1>add code</h1>
 <?php echo $this->Html->link('一覧へ戻る', array('action' => 'index')); ?>
-<style>
-.left {
-  float: left;
-  width: 80%;
-}
-.right {
-  float: right;
-  width:19%;
-}
-</style>
-
 <div class="left">
 <?php
 echo $this->Form->create('Kind');

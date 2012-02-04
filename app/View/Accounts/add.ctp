@@ -1,13 +1,3 @@
-<style>
-.left {
-    width:70%;
-    float: left;
-}
-.right {
-    width: 29%;
-    float: right;
-}
-</style>
 <div class="left">
 <h1>add</h1>
 <?php
