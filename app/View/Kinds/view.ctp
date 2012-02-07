@@ -23,6 +23,14 @@
     <th>yen</th>
     <th>memo</th>
   </tr>
+<?php
+function cmp($a, $b) {
+    if ($a['date'] == $b['date']) return 0;
+    else return ($a['date'] < $b['date']) ? -1 : 1;
+}
+usort($kind['Account'],'cmp');
+?>
+
   <?php foreach ($kind['Account'] as $ac): ?>
   <tr>
     <td><?php echo $ac['id']; ?></td>

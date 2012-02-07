@@ -6,11 +6,11 @@ class KindsController extends AppController {
     public $uses = array('Kind', 'Account');
 
     public function index() {
-        $this->set('kinds', $this->Kind->find('all'));
+        $this->set('kinds', $this->Kind->find('all',array('order'=>'code')));
     }
 
     public function add($id = null) {
-        $this->set('kinds', $this->Kind->find('all'));
+        $this->set('kinds', $this->Kind->find('all',array('order'=>'code')));
         if ($this->request->is('post')) {
             if ($this->Kind->save($this->request->data)) {
                 $this->Session->setFlash('added successfully.');
@@ -41,7 +41,7 @@ class KindsController extends AppController {
         else {
             $this->Kind->id = $id;
             $this->set('kind', $this->Kind->read());
-            $this->set('kinds', $this->Kind->find('list'));
+            $this->set('kinds', $this->Kind->find('list',array('order'=>'code')));
             $this->set('sum',
                        $this->Account->query("SELECT Sum(yen) from accounts
                                               where kind_id=$id

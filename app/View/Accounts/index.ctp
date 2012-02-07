@@ -35,6 +35,7 @@
     <th>code</th>
     <th>name</th>
     <th>in or out</th>
+    <th>action</th>
   </tr>
   <?php foreach ($kinds as $kind): ?>
   <tr>
@@ -43,6 +44,10 @@
     <td><?php if ($kind['Kind']['isincoming']==1) 
     echo "in";
     else echo "out"; ?></td>
+    <td><?php
+    echo $this->Html->link('view',array('controller'=>'Kinds',
+                                        'action'=>'view',$kind['Kind']['id']));
+    ?></td>
   </tr>
   <?php endforeach; ?>
 </table>
