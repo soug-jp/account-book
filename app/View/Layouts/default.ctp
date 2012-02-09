@@ -39,7 +39,7 @@ $cakeDescription = 'Account-Book System: Powered by CakePHP 2.0.5';
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+			<h1><?php echo $this->Html->link($cakeDescription, array('controller'=>'accounts','action'=>'index')); ?></h1>
 		</div>
 		<div id="content">
 
