@@ -5,7 +5,6 @@ class Kind extends AppModel {
     public $validate = array(
         'code' => array(
             //'rule' => 'isUnique'
-            'isUnique' => array('rule' => 'isUnique'),
             'notEmpty' => array('rule' => 'notEmpty')
         ),
         'name' => array(

@@ -16,7 +16,10 @@ class CalcController extends AppController {
                             "select sum(yen) from accounts where year(date)=$year;"));
     }
     public function all() {
-        $this->set('kinds',$kinds = $this->Kind->find('all',array('order'=>'code')));
+        $user = AuthComponent::user();
+        $this->set('kinds',$kinds = $this->Kind->find('all',array(
+                'conditions' => array('Kind.user_id' => $user['id']),
+                'order'=>'code')));
         $in = $out = 0;
         foreach ($kinds as $kind) {
             if ($kind['Kind']['isincoming'] == 0) {
