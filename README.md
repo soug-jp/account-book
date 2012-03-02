@@ -22,10 +22,11 @@ CakePHPを利用して作った家計簿ライクな何かです。
 インストール方法
 ----------------
 
-公開するディレクトリに展開して下さい。
-展開したディレクトリのapp/tmp以下に書き込み権限を付与して下さい。
-app/Config/core.php 187行目あたりにあるSecurity.saltとSecurity.cipherSeedの値を適当に変更します。
-app/Config/database.php.defaultをdatabase.phpにリネームして、データベースエンジンの設定を変更して下さい。
+* 公開するディレクトリに展開して下さい。
+* 展開したディレクトリのapp/tmp以下にあなたが使用しているHTTPサーバーが変更できるように書き込み権限を付与して下さい。
+* app/Config/core.php 187行目あたりにあるSecurity.saltとSecurity.cipherSeedの値を適当に変更します。
+* app/Config/database.php.defaultをdatabase.phpにリネームして、データベースエンジンの設定を変更して下さい。
+* mysql -u username -p < dbdump.sql でデータベーステーブルを作成して下さい。
 
 ライセンス
 ----------
