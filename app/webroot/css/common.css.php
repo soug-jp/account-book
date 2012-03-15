@@ -30,3 +30,11 @@ $mob = preg_match("/(SoftBank|DoCoMo|KDDI)/",$_SERVER["HTTP_USER_AGENT"]);
 }
 <?php endif; ?>
 <?php ob_end_flush(); ?>
+.lefthalf {
+    width:50%;
+    float:left;
+}
+.righthalf {
+    width:50%;
+    float:right;
+}

@@ -24,6 +24,10 @@
 </div>
 
 <div class="right">
+<?php echo $this->element('sidemenu'); ?>
+</div>
+
+<div class="right">
 <h1>収支区分リスト</h1>
 <?php echo $this->Html->link('新規収支区分を追加',array('controller'=>'Kinds',
                                               'action'=>'add')); ?><br />

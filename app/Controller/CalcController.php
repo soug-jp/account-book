@@ -8,12 +8,26 @@ class CalcController extends AppController {
     public function year($year = null) {
         if ($year == null)
             $this->redirect(array('controller'=>'Accounts','action'=>'index'));
-        
-        $this->set('acs',$this->Account->query(
-                            "select * from accounts 
-                             where year(date)=$year;"));
-        $this->set('sum', $this->Account->query(
-                            "select sum(yen) from accounts where year(date)=$year;"));
+        $user = AuthComponent::user();
+
+        $this->set('year',h($year));
+        $begin = mktime(0, 0, 0, 1, 1, $year);
+        $end = mktime(23, 59, 59, 12, 31, $year);
+        App::uses('CakeTime', 'Utility');
+        $ycond = CakeTime::daysAsSql($begin, $end, 'Account.date');
+
+        $this->set('acsin',$this->Account->find('all',array(
+                            'conditions'=>array('Account.user_id'=>$user['id'],
+                                                'Kind.isincoming'=>1,
+                                                $ycond))));
+        $this->set('acsout',$this->Account->find('all',array(
+                            'conditions'=>array('Account.user_id'=>$user['id'],
+                                                'Kind.isincoming'=>0,
+                                                $ycond))));
+        $this->set('in', $this->Account->query(
+                            "select sum(yen) from accounts left join kinds on accounts.kind_id = kinds.id where kinds.isincoming=1 AND year(date)=$year AND accounts.user_id={$user['id']};"));
+        $this->set('out', $this->Account->query(
+                            "select sum(yen) from accounts left join kinds on accounts.kind_id = kinds.id where kinds.isincoming=0 AND year(date)=$year AND accounts.user_id={$user['id']};"));
     }
     public function all() {
         $user = AuthComponent::user();

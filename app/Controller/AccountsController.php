@@ -73,4 +73,8 @@ class AccountsController extends AppController {
             }
         }
     }
+
+    public function calc_year() {
+        $this->redirect(array('controller'=>'Calc','action'=>'year',$this->data['Account']['date']['year']));
+    }
 }
