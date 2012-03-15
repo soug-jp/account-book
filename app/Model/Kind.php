@@ -14,4 +14,16 @@ class Kind extends AppModel {
             'rule' => array('inList',array(0,1))
         )
     );
+    
+    public function beforeValidate($options) {
+        $ret = true;
+        $user = AuthComponent::user();
+        $rec = $this->find('first',array('conditions'=>array(
+                                            $this->alias.'.user_id' => $user['id'],
+                                            $this->alias.'.code' => $this->data[$this->alias]['code'])));
+        if (!empty($rec))
+            $ret = false;
+
+        return $ret;
+    }
 }

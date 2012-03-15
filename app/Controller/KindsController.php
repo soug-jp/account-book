@@ -19,10 +19,19 @@ class KindsController extends AppController {
                 'order'=>'code')));
         if ($this->request->is('post')) {
             if ($this->Kind->save($this->request->data)) {
-                $this->Session->setFlash('added successfully.');
+                $flash='登録に成功しました： コード';
+                $flash .= $this->request->data['Kind']['code'];
+                $flash .= " ";
+                $flash.=h($this->request->data['Kind']['name']);
+                if ($this->request->data['Kind']['isincoming'] == 1)
+                    $flash .= ' (収入)';
+                else
+                    $flash .= ' (支出)';
+                $this->Session->setFlash($flash);
+                //$this->Session->setFlash('登録に成功しました：'.$this->request->data['Kind']['name'].'('.($this->request->data['Kind']['isincoming']==true)?'収入':'支出');
                 $this->redirect(array('action' => 'add'));
             } else {
-                $this->Session->setFlash('Unable to add!!!');
+                $this->Session->setFlash('登録に失敗しました。赤枠の内容を修正して下さい。赤枠がない場合、区分コードが重複しています');
             }
         }
     }
