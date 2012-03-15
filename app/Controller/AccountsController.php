@@ -15,7 +15,7 @@ class AccountsController extends AppController {
                 'conditions' => array('Kind.user_id' => $user['id']),
                 'order' => 'code',
                 ));
-        $this->set('kinds', $kind_all);
+        $this->set('kindl', $kind_all);
         $this->set('kindn', $this->getkindcode2namear($kind_all));
     }
 

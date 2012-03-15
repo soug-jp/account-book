@@ -11,23 +11,5 @@ echo $this->Form->end('記録更新');
 ?>
 </div>
 <div class="right">
-<h1>収支区分リスト</h1>
-<table>
-  <tr>
-    <th>区分コード</th>
-    <th>区分名</th>
-    <th>収入or支出</th>
-  </tr>
-  <?php foreach ($kindl as $kind): ?>
-  <tr>
-    <td><?php echo $kind['Kind']['code']; ?></td>
-    <td><?php echo $kind['Kind']['name']; ?></td>
-    <td>
-      <?php if ($kind['Kind']['isincoming']==1)
-        echo "収入";
-      else echo "支出";?>
-    </td>
-  </tr>
-  <?php endforeach; ?>
-</table>
+<?php echo $this->element('codelist'); ?>
 </div>
