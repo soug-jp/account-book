@@ -7,6 +7,21 @@ class UsersController extends AppController {
 
     public function index() {
         $this->User->recursive = 0;
+        $cml = file_get_contents('https://api.github.com/repos/bis5/account-book/commits');
+        $cml = json_decode($cml,true);
+        $items = array();
+        $cnt = 0;
+        foreach ($cml as $log) {
+            if ($cnt++ > 5) break;
+            $desc = mb_strimwidth(nl2br($log['commit']['message']),0,128,'...');
+            $grav = 'http://www.gravatar.com/avatar.php?gravatar_id='
+                    .$log['committer']['gravatar_id']
+                    .'&size=30';
+            $cter = $log['commit']['committer']['name'];
+            $item = "<tr><td>$desc</td><td><img src=\"$grav\" alt=\"av\">$cter</td></tr>";
+            $items[] = $item;
+        }
+        $this->set('commit', $items);
         $this->set('users', $this->paginate());
     }
 
