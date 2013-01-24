@@ -17,7 +17,8 @@
  */
 
 //$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-$cakeDescription = 'Account-Book System: Powered by CakePHP 2.0.5';
+$cakeDescription = '家計簿Webシステム(仮称): Powered by CakePHP 2.0.5';
+$user = AuthComponent::user();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -34,15 +35,25 @@ $cakeDescription = 'Account-Book System: Powered by CakePHP 2.0.5';
 
 		echo $scripts_for_layout;
 	?>
-    <link rel="stylesheet" type="text/css" href="/account/css/common.css.php" />
+    <link rel="stylesheet" type="text/css" href="/css/common.css.php" />
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, array('controller'=>'accounts','action'=>'index')); ?></h1>
+			<h1><?php 
+            if ($user == null) 
+                echo $this->Html->link($cakeDescription, '/'); 
+            else 
+                echo $this->Html->link($cakeDescription,
+                        array('controller' => 'Accounts',
+                              'action' => 'index'));?></h1>
 		</div>
 		<div id="content">
-
+        <div id="welcome" style="text-align:right">
+            <?php if ($user != null): ?>
+            Welcome, <?php echo $user['username'];?> !&nbsp;<?php echo $this->Html->link('ログアウト',array('controller'=>'Users','action'=>'logout'));?>
+            <?php endif; ?>
+        </div>
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $content_for_layout; ?>
